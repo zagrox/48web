@@ -11,6 +11,12 @@ export type ServiceCategory =
 
 export type ServiceTier = 'Basic' | 'Pro';
 
+export interface MethodologyStep {
+  step: number;
+  title: string;
+  description: string;
+}
+
 export interface Service {
   id: number;
   category: ServiceCategory;
@@ -20,4 +26,14 @@ export interface Service {
   description: string;
   tier: ServiceTier;
   hasOffer?: boolean;
+
+  // New detailed fields
+  keyBenefits?: string[];
+  methodology?: MethodologyStep[];
+  deliverables?: string[];
+  idealFor?: string;
+  requiredInputs?: string[];
+  pricingModel?: string;
+  estimatedTimeline?: string;
+  relatedServices?: number[];
 }

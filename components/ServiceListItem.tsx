@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Service } from '../types';
-import { getServiceIcon } from './ServiceIcons';
+import { getServiceIconComponent } from './ServiceIcons';
 
 interface ServiceListItemProps {
   service: Service;
@@ -15,7 +14,7 @@ const ArrowLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const ServiceListItem: React.FC<ServiceListItemProps> = ({ service }) => {
-  const Icon = getServiceIcon(service.id);
+  const IconComponent = getServiceIconComponent(service.id);
 
   return (
     <Link 
@@ -23,7 +22,7 @@ const ServiceListItem: React.FC<ServiceListItemProps> = ({ service }) => {
         className="group flex items-center p-4 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm hover:shadow-md hover:border-black dark:hover:border-white transition-all duration-300"
     >
         <div className="flex-shrink-0 me-4">
-            {Icon}
+            <IconComponent className="w-8 h-8 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
         </div>
         <div className="flex-grow">
             <h3 className="text-md font-bold text-black dark:text-white">{service.name}</h3>

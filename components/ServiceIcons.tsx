@@ -1,6 +1,6 @@
 import React from 'react';
 
-type IconProps = { className?: string };
+export type IconProps = { className?: string };
 
 const SparklesIcon: React.FC<IconProps> = ({ className }) => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -78,8 +78,7 @@ const RectangleGroupIcon: React.FC<IconProps> = ({ className }) => (
 
 const LightBulbIcon: React.FC<IconProps> = ({ className }) => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-11.25a6.01 6.01 0 00-1.5-11.25" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6.01 6.01 0 00-1.5-11.25a6.01 6.01 0 001.5-11.25m0 22.5A6.01 6.01 0 0113.5 6.75a6.01 6.01 0 01-1.5 11.25m0 0A2.25 2.25 0 0112 18.75m0 0a2.25 2.25 0 00-2.25 2.25m2.25-2.25a2.25 2.25 0 012.25 2.25m-2.25-2.25a2.25 2.25 0 002.25 2.25M12 18.75a6.01 6.01 0 00-1.5-11.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-11.25H12a6.01 6.01 0 00-1.5 11.25m1.5 0V18m0 0a2.25 2.25 0 00-2.25 2.25m2.25-2.25a2.25 2.25 0 012.25 2.25m-4.5 0a2.25 2.25 0 01-2.25-2.25M12 18.75a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008a.75.75 0 01.75-.75h.008z" />
     </svg>
 );
 
@@ -91,7 +90,7 @@ const MagnifyingGlassIcon: React.FC<IconProps> = ({ className }) => (
 
 const NewspaperIcon: React.FC<IconProps> = ({ className }) => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V21h-11.25m-1.875 0v-1.5c0-.621.504-1.125 1.125-1.125h3.375c.621 0 1.125.504 1.125 1.125v1.5m-3.375 0h3.375m-3.375 0p-1.875 0v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5m1.875 0h11.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V21h-11.25m-1.875 0v-1.5c0-.621.504-1.125 1.125-1.125h3.375c.621 0 1.125.504 1.125 1.125v1.5m-3.375 0h3.375m-3.375 0m-1.875 0v-1.5c0-.621.504-1.125 1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5m1.875 0h11.25" />
     </svg>
 );
 
@@ -139,7 +138,6 @@ const FilmIcon: React.FC<IconProps> = ({ className }) => (
 
 const RocketLaunchIcon: React.FC<IconProps> = ({ className }) => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v.01a6 6 0 01-5.84-7.38l1.3-4.881A6 6 0 0113.25 4.54l4.882 1.3a6 6 0 017.38 5.84l-1.3 4.881z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v.01a6 6 0 01-5.84-7.38l1.3-4.881A6 6 0 0113.25 4.54l4.882 1.3a6 6 0 017.38 5.84l-1.3 4.881z" />
     </svg>
 );
@@ -318,7 +316,6 @@ const iconMap: { [key: number]: React.FC<IconProps> } = {
     48: CogIcon
 };
 
-export const getServiceIcon = (serviceId: number): React.ReactElement => {
-    const IconComponent = iconMap[serviceId] || DefaultIcon;
-    return <IconComponent className="w-8 h-8 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />;
+export const getServiceIconComponent = (serviceId: number): React.FC<IconProps> => {
+    return iconMap[serviceId] || DefaultIcon;
 };

@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Service } from '../types';
-import { getServiceIcon } from './ServiceIcons';
+import { getServiceIconComponent } from './ServiceIcons';
 
 interface ServiceCardProps {
   service: Service;
@@ -16,7 +15,7 @@ const ArrowLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
-  const Icon = getServiceIcon(service.id);
+  const IconComponent = getServiceIconComponent(service.id);
   
   return (
     <Link 
@@ -34,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <div className="flex flex-col h-full">
             <div className="flex-grow">
                 <div className="mb-4">
-                    {Icon}
+                    <IconComponent className="w-8 h-8 text-gray-400 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
                 </div>
                 <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">{service.category}</span>
                 <h3 className="text-lg font-bold text-black dark:text-white mt-3 mb-1">{service.name}</h3>
