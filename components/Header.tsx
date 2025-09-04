@@ -10,7 +10,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link to="/" className="text-2xl font-bold text-black dark:text-white">
-              IR48.com
+              IR48
             </Link>
           </div>
           <ThemeToggle />
