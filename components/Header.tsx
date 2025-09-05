@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { useConfig } from '../hooks/useConfig';
 
 // --- Icons ---
 const MenuIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -20,6 +21,9 @@ const XIcon: React.FC<{ className?: string }> = ({ className }) => (
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
+    const { config } = useConfig();
+
+    const logoUrl = config ? `${config.app_backend}/assets/${config.app_logo}` : null;
 
     // Close menu on route change
     useEffect(() => {
@@ -46,7 +50,7 @@ const Header: React.FC = () => {
                         {/* Left Slot (for RTL this is right) - Mobile Menu Button */}
                         <div className="flex-1 flex justify-start">
                             <button
-                                className="md:hidden p-2 -mr-2 rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+                                className="p-2 -mr-2 rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800"
                                 onClick={() => setIsMenuOpen(true)}
                                 aria-label="Open menu"
                             >
@@ -56,8 +60,17 @@ const Header: React.FC = () => {
 
                         {/* Center Slot - Logo */}
                         <div className="flex-1 flex justify-center">
-                            <Link to="/" className="text-2xl font-bold text-black dark:text-white">
-                                IR48
+                            <Link to="/" className="flex items-center text-2xl font-bold text-black dark:text-white">
+                                {logoUrl ? (
+                                    <img 
+                                        src={logoUrl} 
+                                        alt="IR48 Logo" 
+                                        className="h-10 dark:invert transition-all" 
+                                        aria-label="IR48 Homepage"
+                                    />
+                                ) : (
+                                    <span>IR48</span>
+                                )}
                             </Link>
                         </div>
 
