@@ -14,10 +14,10 @@ const AppContent: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // On every initial load or refresh, force navigation to the homepage.
-    // This ensures a consistent starting point in the AI Studio environment.
+    // On the very first load, force navigation to the homepage.
+    // The empty dependency array [] ensures this runs only once on mount.
     navigate('/', { replace: true });
-  }, [navigate]);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
